@@ -1,0 +1,8 @@
+date,customer,revenue,orders,country
+2026-01-01,Alice,1200,4,USA
+2026-01-02,Bob,900,3,Canada
+2026-01-03,Charlie,1500,5,USA
+2026-01-04,David,1100,4,UK
+2026-01-05,Eva,1800,6,USA
+2026-01-06,Frank,950,3,Germany
+2026-01-07,Grace,1400,5,Canada
