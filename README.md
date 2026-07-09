@@ -1,43 +1,43 @@
 # AI Data Analyst Agent
 
-AI Data Analyst Agent is a Python application that uses the OpenAI Responses API to analyze structured datasets and generate business insights.
-
-Rather than sending a dataset directly to an LLM, the application follows an agentic workflow. It first profiles the dataset, creates an analysis plan, selects the appropriate analytics tools, executes those tools, and then generates an executive-style business report.
-
-This project was built to explore how AI agents can automate analytics workflows while keeping the architecture modular, extensible, and easy to maintain.
+An agentic AI application that profiles CSV datasets, creates analysis plans, dynamically selects Python analytics tools, executes those tools, and generates executive-style business reports using the OpenAI Responses API.
 
 ---
 
 ## Features
 
-- Profiles structured datasets
-- Summarizes dataset structure and data quality
-- Generates an AI-driven analysis plan
-- Dynamically selects analytics tools
-- Executes Python analytics tools
-- Produces executive-style business reports
-- Uses a shared agent state throughout the workflow
-- Modular tool registry for adding new capabilities
+- Load CSV datasets using Pandas
+- Automatically profile datasets
+  - Dataset shape
+  - Column names
+  - Data types
+  - Missing values
+  - Summary statistics
+- Generate an AI analysis plan based on a business goal
+- Dynamically select analytics tools using a metadata-driven tool registry
+- Execute Python analytics tools automatically
+- Generate executive-style analytics reports
+- Safely handle unknown tool selections
 
 ---
 
-## Workflow
+## Version History
 
-```
-Load Dataset
-      ↓
-Profile Dataset
-      ↓
-Create Agent State
-      ↓
-Generate Analysis Plan
-      ↓
-Select Analytics Tools
-      ↓
-Execute Selected Tools
-      ↓
-Generate Executive Report
-```
+### Version 1.0
+
+- Built an AI-powered data analyst capable of profiling CSV datasets
+- Generated analytics plans using the OpenAI Responses API
+- Dynamically selected and executed Python analytics tools
+- Produced executive-style analytics reports
+
+### Version 2.0
+
+- Introduced a metadata-driven tool registry
+- Added tool descriptions for improved AI planning
+- Generated planning prompts dynamically from the tool registry
+- Improved tool execution architecture
+- Added safe handling for unknown tool selections
+- Refactored the codebase with reusable helper functions
 
 ---
 
@@ -47,82 +47,104 @@ Generate Executive Report
 - Pandas
 - OpenAI Responses API
 - python-dotenv
-- Git
-- GitHub
 
 ---
 
 ## Project Structure
 
-```
+```text
 ai-data-analyst-agent/
 │
 ├── main.py
-├── README.md
+├── sales.csv
 ├── requirements.txt
 ├── .env.example
 ├── .gitignore
-└── sales.csv
+└── README.md
 ```
 
 ---
 
-## Getting Started
+## Installation
 
-### Clone the repository
+Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ai-data-analyst-agent.git
+git clone https://github.com/aarrohi/ai-data-analyst-agent.git
 ```
 
-### Navigate to the project
+Navigate to the project folder:
 
 ```bash
 cd ai-data-analyst-agent
 ```
 
-### Install dependencies
+Install the required packages:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Create a `.env` file
+(Optional) Create a `.env` file in the project directory:
 
-Create a file named `.env` in the project directory and add your OpenAI API key:
-
-```
-OPENAI_API_KEY=your_openai_api_key
+```text
+OPENAI_API_KEY=your_api_key_here
 ```
 
-### Run the application
+---
+
+## Running the Application
+
+Run:
 
 ```bash
-python main.py
+python3 main.py
 ```
 
+Example:
+
+```text
+Enter the path to your CSV file:
+sales.csv
+
+Enter the business goal or question:
+Revenue by country
+```
+
+The application will:
+
+1. Profile the dataset
+2. Generate an AI analysis plan
+3. Select analytics tools
+4. Execute Python analytics tools
+5. Generate an executive analytics report
+
 ---
 
-## Planned Enhancements
+## Current Capabilities
 
-This project is designed to evolve over time. Planned improvements include:
+✔ Dataset profiling
 
-- Additional analytics tools
-- Structured outputs
-- Improved prompt engineering
-- LangGraph workflow orchestration
-- Retrieval-Augmented Generation (RAG)
-- Evaluation framework
-- Multi-agent collaboration
-- Interactive web interface
-- Cloud deployment
+✔ AI-generated analytics planning
+
+✔ Dynamic tool selection
+
+✔ Metadata-driven tool registry
+
+✔ Automated Python tool execution
+
+✔ Executive-style report generation
 
 ---
 
-## Why I Built This
+## Upcoming Improvements
 
-Data analysts spend a significant amount of time exploring datasets, checking data quality, deciding which analyses to perform, and summarizing findings.
+This project is under active development. Future versions will expand the agent with more advanced planning, reasoning, retrieval, and orchestration capabilities.
 
-This project explores how an AI agent can automate those repetitive tasks by combining planning, tool execution, and business reasoning into a single workflow while maintaining a clean and extensible architecture.
+---
 
-As the project evolves, it will incorporate more advanced agentic AI techniques such as workflow orchestration, retrieval, evaluation, and multi-agent collaboration.
+## Author
+
+**Aarrohi Aagrawal**
+
+GitHub: https://github.com/aarrohi

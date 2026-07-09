@@ -76,13 +76,34 @@ def get_column_names(df):
 
 def create_tool_registry():
     return {
-        "check_missing_values": check_missing_values,
-        "summarize_numeric_columns": summarize_numeric_columns,
-        "get_column_names": get_column_names
+        "check_missing_values": {
+            "function": check_missing_values,
+            "description": "Counts missing values in each column."
+        },
+        "summarize_numeric_columns": {
+            "function": summarize_numeric_columns,
+            "description": "Returns summary statistics for numeric columns."
+        },
+        "get_column_names": {
+            "function": get_column_names,
+            "description": "Returns the column names in the dataset."
+        }
     }
 
 
-def build_planning_prompt(agent_state):
+def format_tools_for_prompt(tool_registry):
+    tool_descriptions = []
+
+    for tool_name, tool_info in tool_registry.items():
+        description = tool_info["description"]
+        tool_descriptions.append(f"- {tool_name}: {description}")
+
+    return "\n".join(tool_descriptions)
+
+
+def build_planning_prompt(agent_state, tool_registry):
+    available_tools = format_tools_for_prompt(tool_registry)
+
     return f"""
 You are an AI Data Analyst Agent.
 
@@ -93,9 +114,7 @@ Business Goal:
 {agent_state["business_goal"]}
 
 Choose the best tools to use from this list:
-- check_missing_values
-- summarize_numeric_columns
-- get_column_names
+{available_tools}
 
 Return your response in this exact format:
 
@@ -184,7 +203,11 @@ def execute_tools(agent_state, selected_tools, tool_registry):
     df = agent_state["df"]
 
     for tool_name in selected_tools:
-        tool_function = tool_registry[tool_name]
+        if tool_name not in tool_registry:
+            agent_state["tool_results"][tool_name] = "Tool not found."
+            continue
+
+        tool_function = tool_registry[tool_name]["function"]
         result = tool_function(df)
         agent_state["tool_results"][tool_name] = result
 
@@ -225,7 +248,7 @@ def main():
 
     tool_registry = create_tool_registry()
 
-    planning_prompt = build_planning_prompt(agent_state)
+    planning_prompt = build_planning_prompt(agent_state, tool_registry)
 
     plan = ask_gpt(planning_prompt)
 
