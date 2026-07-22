@@ -1,8 +1,6 @@
 # AI Data Analyst Agent
 
-An agentic AI application that translates natural language business questions into executable analytics workflows.
-
-The application profiles CSV datasets, creates structured analysis plans, dynamically selects Python analytics tools, executes real data analysis using Pandas, and generates executive-style business reports using the OpenAI Responses API.
+An agentic AI application that profiles CSV datasets, creates analysis plans, dynamically selects Python analytics tools, executes those tools, and generates executive-style business reports using the OpenAI Responses API.
 
 ---
 
@@ -15,101 +13,35 @@ The application profiles CSV datasets, creates structured analysis plans, dynami
   - Data types
   - Missing values
   - Summary statistics
-- Translate business questions into structured analytics plans
-- Dynamically select analytics tools
+- Generate an AI analysis plan based on a business goal
+- Dynamically select analytics tools using a metadata-driven tool registry
 - Execute Python analytics tools automatically
-- Perform grouped business analysis (e.g. Revenue by Country)
-- Validate tool arguments before execution
 - Generate executive-style analytics reports
-- Local fallback mode when no OpenAI API key is configured
+- Safely handle unknown tool selections
 
 ---
 
-## Example Workflow
+## Version History
 
-```
-Business Question
-        │
-        ▼
-Dataset Profiling
-        │
-        ▼
-AI Planning
-        │
-        ▼
-Tool Selection
-        │
-        ▼
-Python Tool Execution
-        │
-        ▼
-Executive Report
-```
-
-Example question:
-
-```
-Revenue by country
-```
-
-The AI agent creates an execution plan similar to:
-
-```json
-{
-  "plan": "Calculate total revenue grouped by country.",
-  "tools": [
-    {
-      "name": "calculate_grouped_metric",
-      "arguments": {
-        "group_by": "country",
-        "metric": "revenue",
-        "aggregation": "sum"
-      }
-    }
-  ]
-}
-```
-
-The Python analytics engine executes the selected tool and generates an executive-style report.
-
----
-
-# Version History
-
-## Version 1.0
+### Version 1.0
 
 - Built an AI-powered data analyst capable of profiling CSV datasets
 - Generated analytics plans using the OpenAI Responses API
 - Dynamically selected and executed Python analytics tools
 - Produced executive-style analytics reports
 
----
-
-## Version 2.0
+### Version 2.0
 
 - Introduced a metadata-driven tool registry
 - Added tool descriptions for improved AI planning
 - Generated planning prompts dynamically from the tool registry
 - Improved tool execution architecture
 - Added safe handling for unknown tool selections
-- Refactored the codebase using reusable helper functions
+- Refactored the codebase with reusable helper functions
 
 ---
 
-## Version 3.0
-
-- Introduced structured AI planning using JSON
-- Added argument-aware tool execution
-- Implemented grouped business analysis using Pandas
-- Added dynamic aggregation (sum, average, count, min, max)
-- Added validation for tool names and required arguments
-- Implemented fallback planning without an OpenAI API key
-- Improved report generation using actual analytics results
-- Enhanced error handling throughout the workflow
-
----
-
-# Technologies
+## Technologies
 
 - Python
 - Pandas
@@ -118,7 +50,7 @@ The Python analytics engine executes the selected tool and generates an executiv
 
 ---
 
-# Project Structure
+## Project Structure
 
 ```text
 ai-data-analyst-agent/
@@ -133,7 +65,7 @@ ai-data-analyst-agent/
 
 ---
 
-# Installation
+## Installation
 
 Clone the repository:
 
@@ -141,7 +73,7 @@ Clone the repository:
 git clone https://github.com/aarrohi/ai-data-analyst-agent.git
 ```
 
-Navigate to the project directory:
+Navigate to the project folder:
 
 ```bash
 cd ai-data-analyst-agent
@@ -150,10 +82,10 @@ cd ai-data-analyst-agent
 Install the required packages:
 
 ```bash
-python3 -m pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
-(Optional) Create a `.env` file:
+(Optional) Create a `.env` file in the project directory:
 
 ```text
 OPENAI_API_KEY=your_api_key_here
@@ -161,7 +93,7 @@ OPENAI_API_KEY=your_api_key_here
 
 ---
 
-# Running the Application
+## Running the Application
 
 Run:
 
@@ -176,16 +108,7 @@ Enter the path to your CSV file:
 sales.csv
 
 Enter the business goal or question:
-revenue by country
-```
-
-Example output:
-
-```text
-USA        4500
-Canada     2300
-UK         1100
-Germany     950
+Revenue by country
 ```
 
 The application will:
@@ -198,34 +121,29 @@ The application will:
 
 ---
 
-# Current Capabilities
+## Current Capabilities
 
-- Dataset profiling
-- AI-generated planning
-- Structured tool selection
-- Metadata-driven tool registry
-- Argument-aware tool execution
-- Dynamic grouped analytics
-- Executive-style reporting
-- Local fallback mode
+✔ Dataset profiling
 
----
+✔ AI-generated analytics planning
 
-# Roadmap
+✔ Dynamic tool selection
 
-Planned future enhancements include:
+✔ Metadata-driven tool registry
 
-- Retrieval-Augmented Generation (RAG)
-- LangGraph workflow orchestration
-- Evaluation framework for AI outputs
-- Multi-agent architecture
-- SQL database integrations
-- FastAPI deployment
-- Interactive web interface
+✔ Automated Python tool execution
+
+✔ Executive-style report generation
 
 ---
 
-# Author
+## Upcoming Improvements
+
+This project is under active development. Future versions will expand the agent with more advanced planning, reasoning, retrieval, and orchestration capabilities.
+
+---
+
+## Author
 
 **Aarrohi Aagrawal**
 
